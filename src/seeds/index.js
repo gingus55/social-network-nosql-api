@@ -18,6 +18,11 @@ const init = async () => {
 
     console.log("[INFO]: Successfully seeded users");
 
+    await Thought.deleteMany({});
+    await Thought.insertMany(thoughts);
+
+    console.log("[INFO]: Successfully seeded thoughts");
+
     const usersFromDb = await User.find({});
 
     usersFromDb.forEach((user) => {
@@ -28,11 +33,6 @@ const init = async () => {
 
       randomThought.users.push(userId);
     });
-
-    await Thought.deleteMany({});
-    await Thought.insertMany(thoughts);
-
-    console.log("[INFO]: Successfully seeded thoughts");
 
     await mongoose.disconnect();
   } catch (error) {
