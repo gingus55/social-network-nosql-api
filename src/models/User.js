@@ -1,8 +1,5 @@
 const { Schema, model } = require("mongoose");
 
-const friend = require("./Friend");
-const thought = require("./Thought");
-
 const userSchema = {
   username: {
     type: String,
@@ -15,8 +12,8 @@ const userSchema = {
     required: true,
     maxLength: 50,
   },
-  friends: [friend],
-  thought: [thought],
+  friends: [User],
+  thoughts: [Thought],
 };
 
 const schema = new Schema(userSchema);
