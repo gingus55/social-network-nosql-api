@@ -23,16 +23,16 @@ const init = async () => {
 
     console.log("[INFO]: Successfully seeded thoughts");
 
-    const usersFromDb = await User.find({});
+    // const usersFromDb = await User.find({});
 
-    usersFromDb.forEach((user) => {
-      const userId = user._id.toString();
+    // usersFromDb.forEach((user) => {
+    //   const userId = user._id.toString();
 
-      const randomThought =
-        thoughts[Math.floor(Math.random() * thoughts.length)];
+    //   const randomThought =
+    //     thoughts[Math.floor(Math.random() * thoughts.length)];
 
-      randomThought.users.push(userId);
-    });
+    //   randomThought.users.push(userId);
+    // });
 
     await mongoose.disconnect();
   } catch (error) {
