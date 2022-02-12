@@ -2,6 +2,14 @@
 
 ![none](https://img.shields.io/static/v1?label=none&message=License&color=green)
 
+# Link to repository
+
+https://github.com/gingus55/social-network-nosql-api
+
+# Link to video of application
+
+<a href="https://drive.google.com/file/d/1_cctTWB8GwKBCELUvnz0jQnLrDMyd9HY/view?usp=sharing">Video of application</a>
+
 ## Table of contents
 
 1. [Description](#description)
@@ -21,7 +29,17 @@ A back end application which lets you create Users and Thoughts. You can also re
 
 ### User Story
 
-WHEN I PUT, GET, POST and DELETE on /users
+```md
+GIVEN a social network API
+WHEN I enter the command to invoke the application
+THEN my server is started and the Mongoose models are synced to the MongoDB database
+WHEN I open API GET routes in Postman for users and thoughts
+THEN the data for each of these routes is displayed in a formatted JSON
+WHEN I test API POST, PUT, and DELETE routes in Postman
+THEN I am able to successfully create, update, and delete users and thoughts in my database
+WHEN I test API POST and DELETE routes in Postman
+THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+```
 
 <a id="guidance"></a>
 
