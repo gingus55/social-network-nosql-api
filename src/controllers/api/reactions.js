@@ -14,14 +14,33 @@ const addReactionForThought = async (req, res) => {
 
     return res.json({ success: true, data: updatedThought });
   } catch (error) {
-    console.log(`[ERROR]: Failed to create thought | ${error.message}`);
+    console.log(`[ERROR]: Failed to create reaction | ${error.message}`);
     return res
       .status(500)
-      .json({ success: false, error: "Failed to create thought" });
+      .json({ success: false, error: "Failed to create reaction" });
   }
 };
-const deleteReactionOfThought = (req, res) => {
-  res.send("deleteReactionOfThought");
+const deleteReactionOfThought = async (req, res) => {
+  try {
+    const { reactionId, id } = req.params;
+
+    const thought = await Thought.findById(id);
+
+    const newReactions = thought.reactions.filter(
+      (currentReaction) => currentReaction.reactionId != reactionId
+    );
+
+    await Thought.updateOne({ _id: id }, { reactions: newReactions });
+
+    const data = await Thought.findById(id);
+
+    return res.json({ success: true, data: data });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to delete reaction | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to delete reaction" });
+  }
 };
 
 module.exports = { addReactionForThought, deleteReactionOfThought };
