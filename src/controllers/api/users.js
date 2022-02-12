@@ -38,8 +38,17 @@ const createUser = async (req, res) => {
 const updateUserById = (req, res) => {
   res.send("updateUserById");
 };
-const deleteUserById = (req, res) => {
-  res.send("deleteUserById");
+const deleteUserById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndDelete(id);
+    return res.json({ success: true, data: user });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to delete user | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to delete user" });
+  }
 };
 
 module.exports = {
