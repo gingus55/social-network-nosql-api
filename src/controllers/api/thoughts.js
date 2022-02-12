@@ -1,5 +1,15 @@
-const getThoughts = (req, res) => {
-  res.send("getThoughts");
+const { Thought } = require("../../models");
+
+const getThoughts = async (req, res) => {
+  try {
+    const thoughts = await Thought.find({});
+    return res.json({ success: true, data: thoughts });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get thoughts | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to get thoughts" });
+  }
 };
 const getThoughtById = (req, res) => {
   res.send("getThoughtById");
