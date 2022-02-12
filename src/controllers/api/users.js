@@ -11,8 +11,19 @@ const getUsers = async (req, res) => {
       .json({ success: false, error: "Failed to get users" });
   }
 };
-const getUserById = (req, res) => {
-  res.send("getUserById");
+const getUserById = async (req, res) => {
+  try {
+    console.log(req.params);
+    const { id } = req.params;
+
+    const user = await User.findById(id);
+    return res.json({ success: true, data: user });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get user | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to get user" });
+  }
 };
 const createUser = (req, res) => {
   res.send("createUser");
