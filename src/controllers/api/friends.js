@@ -22,8 +22,27 @@ const addFriendForUser = async (req, res) => {
       .json({ success: false, error: "Failed to create friend for user" });
   }
 };
-const deleteFriendOfUser = (req, res) => {
-  res.send("deleteFriendOfUser");
+const deleteFriendOfUser = async (req, res) => {
+  try {
+    const { friendId, id } = req.params;
+
+    const user = await User.findById(id);
+
+    const newFriends = user.friends.filter(
+      (currentFriend) => currentFriend._id != friendId
+    );
+
+    await User.updateOne({ _id: id }, { friends: newFriends });
+
+    const data = await User.findById(id);
+
+    return res.json({ success: true, data: data });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to delete friend | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to delete friend" });
+  }
 };
 
 module.exports = { addFriendForUser, deleteFriendOfUser };
