@@ -2,7 +2,7 @@ const { User } = require("../../models");
 
 const getUsers = async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find({}).populate("friends").populate("thoughts");
     return res.json({ success: true, data: users });
   } catch (error) {
     console.log(`[ERROR]: Failed to get users | ${error.message}`);
