@@ -1,0 +1,30 @@
+{
+  "name": "social-network-nosql-api",
+  "version": "1.0.0",
+  "description": "nosql API for social network",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "seed": "node src/seeds/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gingus55/social-network-nosql-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gingus55/social-network-nosql-api/issues"
+  },
+  "homepage": "https://github.com/gingus55/social-network-nosql-api#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "moment": "^2.29.1",
+    "mongoose": "^6.2.1"
+  }
+}
