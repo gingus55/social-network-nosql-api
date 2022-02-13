@@ -8,7 +8,7 @@ https://github.com/gingus55/social-network-nosql-api
 
 # Link to video of application
 
-<a href="https://drive.google.com/file/d/1_cctTWB8GwKBCELUvnz0jQnLrDMyd9HY/view?usp=sharing">Video of application</a>
+<a href="https://drive.google.com/file/d/1Fw1YZgTwvoJ869Aw9UHnAiVObUTqGQZD/view?usp=sharing">Video of application</a>
 
 ## Table of contents
 
